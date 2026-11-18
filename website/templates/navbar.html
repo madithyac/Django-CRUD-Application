@@ -1,6 +1,6 @@
 <nav class="navbar md:navbar-expand bg-4 navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">Python Django CRM </a>
+    <a class="navbar-brand" href="{% url 'home' %}">Python Django</a>
     <button
       class="btn-icon navbar-toggler"
       type="button"
@@ -32,9 +32,18 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Login</a>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <button
               class="nav-link"
