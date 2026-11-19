@@ -1,9 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 <div class="col-md-6 offset-md-3">
   {% if user.is_authenticated %}
-  <h1>Hello world</h1>
+  <h1>Records</h1>
 
-  {% else %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">Created on</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+    </tbody>
+  </table>
+
+  {% if records %} {% for record in records %} {{ record.id }} {{ record.first_name }}
+  {{record.last_name }} {{ record.email }} {{ record.phone }} {{ record.address }}  
+  {{ record.city }}  {{ record.state }} {{ record.zipcode }} {{ record.created_at }} 
+  <br />
+  {% endfor %} {% endif %} {% else %}
   <h1>LOGIN PAGE</h1>
   <br />
   <form method="POST" action="{% url 'home' %}">
